@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>get Quote</title>
+</head>
+<body>
+<p id="quote-content"></p>
+<p id="quote-title"></p>
+<button id="get-another-quote-button">get quote</button>
+</body>
+<script src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	function addScriptTag(src){
+		var script = document.createElement('script');
+		script.setAttribute("type","text/javascript");
+		script.src = src;
+		script.id  = "quote";
+		document.body.appendChild(script);
+	}
+	window.onload = function(){
+		//addScriptTag("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=mycallback");
+	}
+	function mycallback(data){
+		post = data.shift();
+		$('#quote-content').html(post.content);
+		$('#quote-title').text(post.title);
+		console.log(post.title);
+	}
+	$('#get-another-quote-button').on('click', function(e) {
+		console.log('click');
+			    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(a) {
+			    	console.log(a);
+		  $("body").append(a[0].content + "<p>&mdash; " + a[0].title + "</p>")
+		});
+	});
+</script>
+</html>
