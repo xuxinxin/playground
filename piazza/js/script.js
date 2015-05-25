@@ -225,7 +225,6 @@
             leftPane.innerHTML = templates.renderQuestions({
                 questions: getStoredQuestions()
             });
-            
         }
     });
 
@@ -237,7 +236,7 @@
 
     // TODO: display question list initially (if there are existing questions)
     console.log(localStorage.questions);
-    if(localStorage.questions == undefined){
+    if(localStorage.questions == undefined || localStorage.questions == []){
         storeQuestions(testQuestions);
     }
     console.log(getStoredQuestions());
