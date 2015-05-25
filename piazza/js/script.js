@@ -236,7 +236,7 @@
 
     // TODO: display question list initially (if there are existing questions)
     console.log(localStorage.questions);
-    if(localStorage.questions == undefined || localStorage.questions == []){
+    if(localStorage.questions == undefined || localStorage.questions.length == 0){
         storeQuestions(testQuestions);
     }
     console.log(getStoredQuestions());
