@@ -217,7 +217,9 @@ i{
 .btn:hover {
     background-color: #48a2de;
 }
-
+.searched{
+    color: #CC2F90;
+}
 /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the

@@ -218,9 +218,27 @@
             leftPane.innerHTML = templates.renderQuestions({
                 questions: leftQuestions
             });
+
+            if(leftQuestions.length !== 0){
+                var allh3 = leftPane.getElementsByTagName("h3"),
+                    allp  = leftPane.getElementsByTagName("p");
+                for (var i = 0; i < leftQuestions.length; i++) {
+                    var h3 = allh3[i].innerHTML,
+                        p  = allp[i].innerHTML;
+                    var searchPattern = new RegExp(('('+searchString+')'), 'ig');
+                    searchPattern.exec(h3);
+                    searchPattern.exec(p);
+                    h3 = h3.replace(searchPattern, '<span class="searched">'+RegExp.$1+'</span>');
+                    p  = p.replace(searchPattern, '<span class="searched">'+RegExp.$1+'</span>');
+                    allh3[i].innerHTML = h3;
+                    allp[i].innerHTML  = p;
+                };
+            }
+
             if(clearRight){
                 rightPane.innerHTML =templates.renderQuestionForm();
             }
+
         }else{
             leftPane.innerHTML = templates.renderQuestions({
                 questions: getStoredQuestions()
