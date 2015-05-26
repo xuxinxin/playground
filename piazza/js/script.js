@@ -227,8 +227,8 @@
                         p  = allp[i].innerHTML;
                     var searchPattern = new RegExp(('('+searchString+')'), 'ig');
                     searchPattern.exec(h3);
-                    searchPattern.exec(p);
                     h3 = h3.replace(searchPattern, '<span class="searched">'+RegExp.$1+'</span>');
+                    searchPattern.exec(p);
                     p  = p.replace(searchPattern, '<span class="searched">'+RegExp.$1+'</span>');
                     allh3[i].innerHTML = h3;
                     allp[i].innerHTML  = p;
